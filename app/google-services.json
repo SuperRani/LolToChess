@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "334534346106",
+    "firebase_url": "https://loltochess-a9344.firebaseio.com",
+    "project_id": "loltochess-a9344",
+    "storage_bucket": "loltochess-a9344.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334534346106:android:c8e9a2263d3db3ad2d82c3",
+        "android_client_info": {
+          "package_name": "com.example.loltochess"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334534346106-qso64ac2dbvkkhpf42rimovbp2g01m4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.loltochess",
+            "certificate_hash": "f94a2e98c93c1a289cc345ba07e4ec7c5c70bd9f"
+          }
+        },
+        {
+          "client_id": "334534346106-sa9cnjloiq4h609re960p8q36ego1fav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLxwYzdkVTQbG3HqAfDYU72qBrnYE47xw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334534346106-sa9cnjloiq4h609re960p8q36ego1fav.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
