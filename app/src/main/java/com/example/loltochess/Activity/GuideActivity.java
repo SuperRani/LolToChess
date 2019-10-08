@@ -1,39 +1,39 @@
-package com.example.loltochess;
+package com.example.loltochess.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
 
+import com.example.loltochess.Adapter.GuideAdapter;
+import com.example.loltochess.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class SynergyActivity extends AppCompatActivity {
-
+public class GuideActivity extends AppCompatActivity {
     public ViewPager mVp;
-    public ContentsPagerAdapter mContentsPagerAdapter;
+    public GuideAdapter mGuideAdapter;
     public TabLayout mTabLayout;
     public Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_synergy);
+        setContentView(R.layout.activity_guide);
         mContext = getApplicationContext();
 
-        mTabLayout = (TabLayout) findViewById(R.id.layout_tab);
-        mTabLayout.addTab(mTabLayout.newTab().setText("종족 시너지"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("직업 시너지"));
+        mTabLayout =  findViewById(R.id.layout_tab_guide);
+        mTabLayout.addTab(mTabLayout.newTab().setText("리롤 확률"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("라운드 정보"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("골드"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("피해량 공식"));
 
         mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        mVp = (ViewPager) findViewById(R.id.vp);
+        mVp = findViewById(R.id.vp_guide);
 
-        mContentsPagerAdapter = new ContentsPagerAdapter(getSupportFragmentManager(), mTabLayout.getTabCount());
-        mVp.setAdapter(mContentsPagerAdapter);
+        mGuideAdapter = new GuideAdapter(getSupportFragmentManager(), mTabLayout.getTabCount());
+        mVp.setAdapter(mGuideAdapter);
 
         mVp.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -53,6 +53,4 @@ public class SynergyActivity extends AppCompatActivity {
             }
         });
     }
-
-   
 }

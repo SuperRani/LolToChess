@@ -1,16 +1,23 @@
-package com.example.loltochess;
+package com.example.loltochess.Activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.os.Bundle;
+
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import com.bumptech.glide.Glide;
+import com.example.loltochess.Item.DetailItem;
+import com.example.loltochess.R;
+import com.example.loltochess.ViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -69,14 +76,37 @@ public class ItemDetailActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         FirebaseRecyclerAdapter<DetailItem, ViewHolder> firebaseRecyclerAdapter
                 = new FirebaseRecyclerAdapter<DetailItem, ViewHolder>(DetailItem.class, R.layout.detail_item, ViewHolder.class, mRef) {
             @Override
             protected void populateViewHolder(ViewHolder viewHolder, DetailItem detailItem, int i) {
                 viewHolder.setDetailMdoel(getApplicationContext(), detailItem.getStandard_image(), detailItem.getSecond_image(), detailItem.getTv_detail1());
             }
+
+            @Override
+            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+            {
+                ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
+                viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Toast.makeText(ItemDetailActivity.this, "하하", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onItemlongClick(View view, int position) {
+                        Toast.makeText(ItemDetailActivity.this, "하하", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+                return super.onCreateViewHolder(parent, viewType);
+            }
         };
         detail_item_recyclerView.setAdapter(firebaseRecyclerAdapter);
 
+
+
     }
+
 }

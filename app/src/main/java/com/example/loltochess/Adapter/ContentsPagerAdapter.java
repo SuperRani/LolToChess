@@ -1,4 +1,4 @@
-package com.example.loltochess;
+package com.example.loltochess.Adapter;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

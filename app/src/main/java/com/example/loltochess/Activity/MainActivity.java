@@ -1,4 +1,4 @@
-package com.example.loltochess;
+package com.example.loltochess.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.example.loltochess.R;
 
 public class MainActivity extends AppCompatActivity implements  View.OnClickListener {
     private ImageButton championButton;
@@ -45,8 +47,11 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
             case R.id.communityButton:
                 break;
-            case R.id.guideButton:
+            case R.id.guideButton: {
+                Intent ig = new Intent(this, GuideActivity.class);
+                startActivity(ig);
                 break;
+            }
             case R.id.itemButton:{
                 Intent i = new Intent(this, ItemListActivity.class);
                 startActivity(i);

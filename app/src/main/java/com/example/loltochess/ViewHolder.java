@@ -19,18 +19,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView mSynergyImage;
     public TextView mTvJob;
-    public ImageView mTribeImage1;
-    public ImageView mTribeImage2;
-    public ImageView mTribeImage3;
-    public ImageView mTribeImage4;
-    public ImageView mTribeImage5;
-    public ImageView mTribeImage6;
-    public ImageView mTribeImage7;
-    public ImageView mTribeImage8;
-    public TextView mTvMainContents;
-    public TextView mTvSubContent1;
-    public TextView mTvSubContent2;
-    public TextView mTvSubContent3;
+    public ImageView mTribeImage1, mTribeImage2, mTribeImage3, mTribeImage4, mTribeImage5, mTribeImage6, mTribeImage7, mTribeImage8;
+    public TextView mTvMainContents, mTvSubContent1, mTvSubContent2, mTvSubContent3;
+
+    //Reload mv
+    public TextView mTvLevel, mTvTier1, mTvTier2, mTvTier3, mTvTier4, mTvTier5;
+
 
 
 
@@ -111,7 +105,22 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mTvSubContent1.setText(tvSubContent1);
         mTvSubContent2.setText(tvSubContent2);
         mTvSubContent3.setText(tvSubContent3);
+    }
 
+    public void setReloadDetails(Context context, String tvLevel, String tvTier1, String tvTier2, String tvTier3, String tvTier4, String tvTier5){
+        mTvLevel = mView.findViewById(R.id.tvLevel);
+        mTvTier1 = mView.findViewById(R.id.tvTier1);
+        mTvTier2 = mView.findViewById(R.id.tvTier2);
+        mTvTier3 = mView.findViewById(R.id.tvTier3);
+        mTvTier4 = mView.findViewById(R.id.tvTier4);
+        mTvTier5 = mView.findViewById(R.id.tvTier5);
+
+        mTvLevel.setText(tvLevel);
+        mTvTier1.setText(tvTier1);
+        mTvTier2.setText(tvTier2);
+        mTvTier3.setText(tvTier3);
+        mTvTier4.setText(tvTier4);
+        mTvTier5.setText(tvTier5);
 
     }
 

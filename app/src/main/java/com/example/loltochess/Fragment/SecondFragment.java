@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.loltochess.R;
-import com.example.loltochess.TribeSynergyItem;
+import com.example.loltochess.Item.TribeSynergyItem;
 import com.example.loltochess.ViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;

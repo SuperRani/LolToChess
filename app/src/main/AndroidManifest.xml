@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SynergyActivity"></activity>
-        <activity android:name=".ItemDetailActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activity.GuideActivity"></activity>
+        <activity android:name=".Activity.SynergyActivity" />
+        <activity android:name=".Activity.ItemDetailActivity" />
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +22,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewHolder" />
-        <activity android:name=".ItemListActivity" />
-        <activity android:name=".Item" />
+        <activity android:name=".Activity.ItemListActivity" />
+        <activity android:name=".Item.Item" />
+        <activity android:name=".Item.DetailItem" />
+        <activity android:name=".Item.ReloadItem" />
+        <activity android:name=".Item.TribeSynergyItem" />
+        <activity android:name=".Adapter.ContentsPagerAdapter" />
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.SynergyActivity">
+    tools:context=".Activity.GuideActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/layout_tab"
+            android:id="@+id/layout_tab_guide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabGravity="fill"
@@ -24,7 +24,7 @@
             app:tabTextColor="#000000" />
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vp"
+            android:id="@+id/vp_guide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

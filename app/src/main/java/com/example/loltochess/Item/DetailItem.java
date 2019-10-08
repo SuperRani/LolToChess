@@ -1,4 +1,4 @@
-package com.example.loltochess;
+package com.example.loltochess.Item;
 
 public class DetailItem {
     public String standard_image;

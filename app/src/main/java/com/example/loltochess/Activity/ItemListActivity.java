@@ -1,4 +1,4 @@
-package com.example.loltochess;
+package com.example.loltochess.Activity;
 
 
 
@@ -16,7 +16,9 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.example.loltochess.Item.Item;
+import com.example.loltochess.R;
+import com.example.loltochess.ViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
