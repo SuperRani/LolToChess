@@ -7,6 +7,7 @@
     tools:context=".Activity.MainActivity"
     android:orientation="vertical">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +35,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            android:background="#00000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.537" />
@@ -53,6 +55,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:background="#00000000"
             app:srcCompat="@drawable/main_champion" />
 
 
@@ -67,6 +70,7 @@
             app:layout_constraintCircleAngle="72"
             app:layout_constraintCircleRadius="140dp"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="#00000000"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/main_synergy" />
 
@@ -81,6 +85,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintCircle="@+id/center_image"
             app:layout_constraintCircleAngle="144"
+            android:background="#00000000"
             app:layout_constraintCircleRadius="140dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/main_community" />
@@ -96,6 +101,7 @@
             app:layout_constraintCircle="@+id/center_image"
             app:layout_constraintCircleAngle="216"
             app:layout_constraintCircleRadius="140dp"
+            android:background="#00000000"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/main_guide"  />
 
@@ -111,6 +117,7 @@
             app:layout_constraintCircleAngle="288"
             app:layout_constraintCircleRadius="140dp"
             app:layout_constraintStart_toStartOf="parent"
+            android:background="#00000000"
             app:srcCompat="@drawable/main_item"  />
 
 

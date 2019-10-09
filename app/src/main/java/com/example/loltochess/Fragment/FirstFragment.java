@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.loltochess.R;
 import com.example.loltochess.Item.TribeSynergyItem;
 import com.example.loltochess.ViewHolder;
+import com.example.loltochess.ViewHolderNon;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -48,11 +49,11 @@ public class FirstFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        FirebaseRecyclerAdapter<TribeSynergyItem, ViewHolder> firebaseRecyclerAdapter
-                =  new FirebaseRecyclerAdapter<TribeSynergyItem, ViewHolder>(TribeSynergyItem.class, R.layout.tribe_synergy_item,ViewHolder.class, mRef ) {
+        FirebaseRecyclerAdapter<TribeSynergyItem, ViewHolderNon> firebaseRecyclerAdapter
+                =  new FirebaseRecyclerAdapter<TribeSynergyItem, ViewHolderNon>(TribeSynergyItem.class, R.layout.tribe_synergy_item,ViewHolderNon.class, mRef ) {
             @Override
-            protected void populateViewHolder(ViewHolder viewHolder, TribeSynergyItem tribeSynergyItem, int i) {
-                viewHolder.setTribeSynergyDetails(getActivity().getApplicationContext(), tribeSynergyItem.getSynergyImage(), tribeSynergyItem.getTvJob(),
+            protected void populateViewHolder(ViewHolderNon viewHolderNon, TribeSynergyItem tribeSynergyItem, int i) {
+                viewHolderNon.setTribeSynergyDetails(getActivity().getApplicationContext(), tribeSynergyItem.getSynergyImage(), tribeSynergyItem.getTvJob(),
                         tribeSynergyItem.getTribeImage1(), tribeSynergyItem.getTribeImage2(), tribeSynergyItem.getTribeImage3(),tribeSynergyItem.getTribeImage4(),
                         tribeSynergyItem.getTribeImage5(),tribeSynergyItem.getTribeImage6(),tribeSynergyItem.getTribeImage7(),tribeSynergyItem.getTribeImage8(),
                         tribeSynergyItem.getTvMainContents(), tribeSynergyItem.getTvSubContent1(),tribeSynergyItem.getTvSubContent2(),tribeSynergyItem.getTvSubContent3());

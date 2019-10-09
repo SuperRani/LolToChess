@@ -1,5 +1,7 @@
 package com.example.loltochess.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,9 +20,15 @@ import com.bumptech.glide.Glide;
 import com.example.loltochess.Item.DetailItem;
 import com.example.loltochess.R;
 import com.example.loltochess.ViewHolder;
+import com.example.loltochess.ViewHolderNon;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.sql.Ref;
 
 public class ItemDetailActivity extends AppCompatActivity {
     public ImageView mainImage_detail;
@@ -36,6 +44,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
 
+
         //action bar
         ActionBar actionBar = getSupportActionBar();
 
@@ -49,7 +58,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         tvWeaponDamage_detail = findViewById(R.id.tvWeaponDamage_detail);
 
         String image = getIntent().getStringExtra("image");
-        String weapon = getIntent().getStringExtra("weapon");
+        final String weapon = getIntent().getStringExtra("weapon");
         String weaponSpec = getIntent().getStringExtra("weaponSpec");
         String weaponDamage = getIntent().getStringExtra("weaponDamage");
 
@@ -58,11 +67,28 @@ public class ItemDetailActivity extends AppCompatActivity {
         tvWeaponSpec_detail.setText(weaponSpec);
         tvWeaponDamage_detail.setText(weaponDamage);
 
-        detail_item_recyclerView = (RecyclerView)findViewById(R.id.detail_item_recyclerView);
+
+        detail_item_recyclerView = (RecyclerView) findViewById(R.id.detail_item_recyclerView);
+
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("DataDetail");
-
-
+//        mRef = mFirebaseDatabase.getReference().child("DataDetail").child(String.valueOf(tvWeapon_detail));
+        if (weapon.equals("B.F.대검")) {
+            mRef = mFirebaseDatabase.getReference().child("DataDetail");
+        } else if (weapon.equals("곡궁")) {
+            mRef = mFirebaseDatabase.getReference().child("DataDetail2");
+        } else if (weapon.equals("쇠사슬 조끼")) {
+            mRef = mFirebaseDatabase.getReference().child("DataDetail3");
+        } else if (weapon.equals("음전자 망토")) {
+            mRef = mFirebaseDatabase.getReference().child("DataDetail4");
+        } else if (weapon.equals("쓸데없이 큰 지팡이")) {
+            mRef = mFirebaseDatabase.getReference().child("DataDetail5");
+        } else if (weapon.equals("여신의 눈물")) {
+            mRef = mFirebaseDatabase.getReference().child("DataDetail6");
+        } else if (weapon.equals("거인의 허리띠")) {
+            mRef = mFirebaseDatabase.getReference().child("DataDetail7");
+        } else if (weapon.equals("뒤집개")) {
+            mRef = mFirebaseDatabase.getReference().child("DataDetail8");
+        }
 
     }
 
@@ -76,37 +102,23 @@ public class ItemDetailActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        firebaseAdapter();
 
-        FirebaseRecyclerAdapter<DetailItem, ViewHolder> firebaseRecyclerAdapter
-                = new FirebaseRecyclerAdapter<DetailItem, ViewHolder>(DetailItem.class, R.layout.detail_item, ViewHolder.class, mRef) {
+
+    }
+
+    public void firebaseAdapter() {
+        FirebaseRecyclerAdapter<DetailItem, ViewHolderNon> firebaseRecyclerAdapter
+                = new FirebaseRecyclerAdapter<DetailItem, ViewHolderNon>(DetailItem.class, R.layout.detail_item, ViewHolderNon.class, mRef) {
             @Override
-            protected void populateViewHolder(ViewHolder viewHolder, DetailItem detailItem, int i) {
-                viewHolder.setDetailMdoel(getApplicationContext(), detailItem.getStandard_image(), detailItem.getSecond_image(), detailItem.getTv_detail1());
+            protected void populateViewHolder(ViewHolderNon viewHolderNon, DetailItem detailItem, int i) {
+
+                viewHolderNon.setDetailMdoel(getApplicationContext(), detailItem.getStandard_image(), detailItem.getSecond_image(), detailItem.getTv_detail1());
+
             }
 
-            @Override
-            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-            {
-                ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
-                viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Toast.makeText(ItemDetailActivity.this, "하하", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onItemlongClick(View view, int position) {
-                        Toast.makeText(ItemDetailActivity.this, "하하", Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-                return super.onCreateViewHolder(parent, viewType);
-            }
         };
         detail_item_recyclerView.setAdapter(firebaseRecyclerAdapter);
-
-
-
     }
 
 }

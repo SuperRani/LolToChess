@@ -5,6 +5,8 @@ package com.example.loltochess.Activity;
 import android.content.Intent;
 
 import android.os.Bundle;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,13 +18,18 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.loltochess.Item.DetailItem;
 import com.example.loltochess.Item.Item;
 import com.example.loltochess.R;
 import com.example.loltochess.ViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class ItemListActivity extends AppCompatActivity {
@@ -40,7 +47,11 @@ public class ItemListActivity extends AppCompatActivity {
         item_recyclerView = (RecyclerView) findViewById(R.id.item_recyclerView);
 //        item_recyclerView.setHasFixedSize(true);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Data");
+        mRef = mFirebaseDatabase.getReference().child("Data");
+//        mRef = mFirebaseDatabase.getReference().child("DataDetail");
+
+
+
     }
 
     private void firebaseSearc(String searchText){
@@ -62,11 +73,18 @@ public class ItemListActivity extends AppCompatActivity {
                         String mTvWeaponSpec_detail = getItem(position).getTvWeaponSpec();
                         String mTvWeaponDamage_detail = getItem(position).getTvWeaponDamage();
 
+
+//                        mFirebaseDatabase.getReference().child("DataDetail").getKey();
+
                         Intent i = new Intent(view.getContext(), ItemDetailActivity.class);
                         i.putExtra("image", mMainImage_detail);
                         i.putExtra("weapon", mTvWeapon_detail);
                         i.putExtra("weaponSpec", mTvWeaponSpec_detail);
                         i.putExtra("weaponDamage", mTvWeaponDamage_detail);
+
+
+
+
                         startActivity(i);
 
                     }
@@ -91,9 +109,12 @@ public class ItemListActivity extends AppCompatActivity {
                 viewHolder.setDetails(getApplicationContext(), item.getItemImage(), item.getTvWeapon(), item.getTvWeaponSpec(), item.getTvWeaponDamage());
             }
 
+
             @Override
-            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
+            public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+
+
+                ViewHolder viewHolder = super.onCreateViewHolder(viewGroup, viewType);
                 viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
@@ -101,7 +122,7 @@ public class ItemListActivity extends AppCompatActivity {
                         String mTvWeapon_detail = getItem(position).getTvWeapon();
                         String mTvWeaponSpec_detail = getItem(position).getTvWeaponSpec();
                         String mTvWeaponDamage_detail = getItem(position).getTvWeaponDamage();
-                     
+//                        mRef.push().getKey();
 
 
                         Intent i = new Intent(view.getContext(), ItemDetailActivity.class);
@@ -109,6 +130,8 @@ public class ItemListActivity extends AppCompatActivity {
                         i.putExtra("weapon", mTvWeapon_detail);
                         i.putExtra("weaponSpec", mTvWeaponSpec_detail);
                         i.putExtra("weaponDamage", mTvWeaponDamage_detail);
+
+
                         startActivity(i);
 
                     }
@@ -120,7 +143,10 @@ public class ItemListActivity extends AppCompatActivity {
                 });
                 return viewHolder;
             }
+
         };
+
+
         item_recyclerView.setAdapter(firebaseRecyclerAdapter);
 
     }
